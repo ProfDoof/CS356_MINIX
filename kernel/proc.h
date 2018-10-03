@@ -18,6 +18,8 @@
 #include "const.h"
 #include "priv.h"
 
+int* os_cs356_proc_message_table;
+
 struct proc {
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
   struct fpu_state_s p_fpu_state;	/* process' fpu_regs saved lazily */
@@ -252,8 +254,8 @@ EXTERN struct proc *rdy_tail[NR_SCHED_QUEUES]; /* ptrs to ready list tails */
 _PROTOTYPE( int mini_send, (struct proc *caller_ptr, endpoint_t dst_e,
 		message *m_ptr, int flags));
 
+
 #endif /* __ASSEMBLY__ */
 
-int* os_cs356_proc_message_table;
 
 #endif /* PROC_H */
