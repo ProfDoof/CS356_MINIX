@@ -254,6 +254,6 @@ _PROTOTYPE( int mini_send, (struct proc *caller_ptr, endpoint_t dst_e,
 
 #endif /* __ASSEMBLY__ */
 
-int* messagetable;
+int* os_cs356_proc_message_table;
 
 #endif /* PROC_H */
