@@ -91,7 +91,7 @@ begbss:
 # 228 "/usr/src/kernel/proc.h"
 # 256 "/usr/src/kernel/proc.h"
 
-int* messagetable;
+int* os_cs356_proc_message_table;
 # 3 "/usr/src/kernel/arch/i386/sconst.h"
 # 1 "/usr/src/kernel/const.h"
 # 5 "/usr/src/kernel/arch/i386/sconst.h"
