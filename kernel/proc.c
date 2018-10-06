@@ -539,7 +539,7 @@ PUBLIC int mini_send(
   dst_p = _ENDPOINT_P(dst_e);
   dst_ptr = proc_addr(dst_p);
   
-  //If the message table has not been defined yet define it.
+  /* If the message table has not been defined yet define it. */
   if(!os_cs356_proc_message_table)
   {
   	os_cs356_proc_message_table = malloc(1000*sizeof(int *));
