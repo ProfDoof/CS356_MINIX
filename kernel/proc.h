@@ -19,8 +19,8 @@
 #include "priv.h"
 
 int  os_cs356_proc_message_table[1000][1000];
-bool os_cs356_proc_column[1000];
-bool os_cs356_proc_row[1000];
+int os_cs356_proc_column[1000];
+int os_cs356_proc_row[1000];
 
 struct proc {
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
