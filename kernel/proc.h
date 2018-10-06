@@ -19,7 +19,7 @@
 #include "priv.h"
 
 
-//Will be size 1000 x 1000
+/* Will be size 1000 x 1000 */
 int** os_cs356_proc_message_table;
 int*  os_cs356_proc_sum_sent;
 int*  os_cs356_proc_sum_received;
