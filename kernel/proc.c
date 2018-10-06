@@ -542,8 +542,9 @@ PUBLIC int mini_send(
   /* If the message table has not been defined yet define it. */
   if(!os_cs356_proc_message_table)
   {
-  	os_cs356_proc_message_table = malloc(1000*sizeof(int *));
-  	for( int i = 0; i < 1000; i++ )
+  	int i;
+  	os_cs356_proc_message_table = malloc(1000*sizeof(int*));
+  	for( i = 0; i < 1000; i++ )
   	{
   		os_cs356_proc_message_table[i] = malloc(1000*sizeof(int));
   	}
