@@ -20,7 +20,7 @@
 
 
 /* Will be size 1000 x 1000 */
-EXTERN int** os_cs356_proc_message_table;
+EXTERN int* os_cs356_proc_message_table;
 EXTERN int*  os_cs356_proc_sum_sent;
 EXTERN int*  os_cs356_proc_sum_received;
 
