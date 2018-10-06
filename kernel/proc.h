@@ -18,7 +18,7 @@
 #include "const.h"
 #include "priv.h"
 
-int* os_cs356_proc_message_table;
+int** os_cs356_proc_message_table;
 
 struct proc {
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
