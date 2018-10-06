@@ -538,6 +538,19 @@ PUBLIC int mini_send(
   int dst_p;
   dst_p = _ENDPOINT_P(dst_e);
   dst_ptr = proc_addr(dst_p);
+  
+  //If the message table has not been defined yet define it.
+  if(!os_cs356_proc_message_table)
+  {
+  	os_cs356_proc_message_table = malloc(1000*sizeof(int *));
+  	for( int i = 0; i < 1000; i++ )
+  	{
+  		os_cs356_proc_message_table[i] = malloc(1000*sizeof(int));
+  	}
+  	os_cs356_proc_sum_sent = malloc(1000*sizeof(int));
+  	os_cs356_proc_sum_received = malloc(1000*sizeof(int));
+  }
+
   os_cs356_proc_message_table[caller_ptr->p_nr + 100][dst_ptr->p_nr + 100]++;
   os_cs356_proc_sum_sent[caller_ptr->p_nr + 100]++;
   os_cs356_proc_sum_received[dst_ptr->p_nr + 100]++;
