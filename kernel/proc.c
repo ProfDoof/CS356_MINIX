@@ -543,13 +543,13 @@ PUBLIC int mini_send(
   if(!os_cs356_proc_message_table)
   {
   	int i;
-  	os_cs356_proc_message_table = (*os_cs356_proc_message_table) malloc(1000*sizeof *os_cs356_proc_message_table);
+  	os_cs356_proc_message_table = (int **) malloc(1000*sizeof int*);
   	for( i = 0; i < 1000; i++ )
   	{
-  		os_cs356_proc_message_table[i] = (*os_cs356_proc_message_table[i]) malloc(1000*sizeof *os_cs356_proc_message_table[i]);
+  		os_cs356_proc_message_table[i] = (int *) malloc(1000*sizeof int);
   	}
-  	os_cs356_proc_sum_sent = (*os_cs356_proc_sum_sent) malloc(1000*sizeof(int));
-  	os_cs356_proc_sum_received = (*os_cs356_proc_sum_received) malloc(1000*sizeof(int));
+  	os_cs356_proc_sum_sent = (int *) malloc(1000*sizeof(int));
+  	os_cs356_proc_sum_received = (int *) malloc(1000*sizeof(int));
   }
 
   os_cs356_proc_message_table[caller_ptr->p_nr + 100][dst_ptr->p_nr + 100]++;
