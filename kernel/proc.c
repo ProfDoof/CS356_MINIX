@@ -542,14 +542,12 @@ PUBLIC int mini_send(
   /* If the message table has not been defined yet define it. */
   if(!os_cs356_proc_message_table)
   {
-  	int i;
-  	os_cs356_proc_message_table = (int **) malloc(1000*sizeof int*);
-  	for( i = 0; i < 1000; i++ )
-  	{
-  		os_cs356_proc_message_table[i] = (int *) malloc(1000*sizeof int);
-  	}
-  	os_cs356_proc_sum_sent = (int *) malloc(1000*sizeof(int));
-  	os_cs356_proc_sum_received = (int *) malloc(1000*sizeof(int));
+  	int table[1000][1000] = {{0}};
+  	int table1[1000] = {{0}};
+  	int table2[1000] = {{0}};
+  	os_cs356_proc_message_table = table;
+  	os_cs356_proc_sum_sent = table1;
+  	os_cs356_proc_sum_received = table2;
   }
 
   os_cs356_proc_message_table[caller_ptr->p_nr + 100][dst_ptr->p_nr + 100]++;
