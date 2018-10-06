@@ -543,10 +543,10 @@ PUBLIC int mini_send(
   if(!os_cs356_proc_message_table)
   {
   	int i;
-  	os_cs356_proc_message_table = malloc(1000*sizeof(int*));
+  	os_cs356_proc_message_table = malloc(1000*sizeof *os_cs356_proc_message_table);
   	for( i = 0; i < 1000; i++ )
   	{
-  		os_cs356_proc_message_table[i] = malloc(1000*sizeof(int));
+  		os_cs356_proc_message_table[i] = malloc(1000*sizeof *os_cs356_proc_message_table[i]);
   	}
   	os_cs356_proc_sum_sent = malloc(1000*sizeof(int));
   	os_cs356_proc_sum_received = malloc(1000*sizeof(int));
