@@ -497,8 +497,7 @@ PUBLIC void cs356_dmp()
 
 	int pidsRecieved[10] = {0};
 	int pidsSent[10] = {0};
-	const int length_of_array = (int) (sizeof(pids) / sizeof(int));
-	int* max_digits = (int*) malloc(sizeof(int)*length_of_array);
+	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
 
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
@@ -540,7 +539,7 @@ PUBLIC void cs356_dmp()
 	{
 		for (j = 0; j < num_procs_to_display; j++)
 		{
-			num_procs_to_display[i][j] = os_cs356_proc_sum_message_table[importantSent[i]][importantReceived[j]];
+			importantMatrix[i][j] = os_cs356_proc_sum_message_table[importantSent[i]][importantReceived[j]];
 		}
 		pidsSent[i] = proc_name(importantReceived[i]);
 		pidsReceived[i] = proc_name(importantSent[i]);
@@ -554,9 +553,9 @@ PUBLIC void cs356_dmp()
 		for (j = 0; j < length_of_array; j++)
 		{
 			int digits = 5;
-			if (num_procs_to_display[i][j] < 10000) digits = 4;
-			if (num_procs_to_display[i][j] < 1000) digits = 3;
-			if (num_procs_to_display[i][j] < 100) digits = 2;
+			if (importantMatrix[i][j] < 10000) digits = 4;
+			if (importantMatrix[i][j] < 1000) digits = 3;
+			if (importantMatrix[i][j] < 100) digits = 2;
 
 			(digits > max_digits[i]) ? max_digits[i] = digits : digits+0;          
 		}
@@ -565,8 +564,8 @@ PUBLIC void cs356_dmp()
 	printf("---------------- Matthew, John, Kyle - Message Table Dump ----------------\n");
 	printf("    name ");
 	for (i = 0; i < num_procs_to_display; i++)
-	{
-		printf("%*.*s ", max_digits[i] , max_digits[i], procName(pidsReceived[i]);
+	{)
+		printf("%*.*s ", max_digits[i] , max_digits[i], procName(pidsReceived[i]));
 	}
 
 	printf("name pid ");
@@ -581,7 +580,7 @@ PUBLIC void cs356_dmp()
 		printf("\n%4s %3d ", proc_name(pidsSent[i]), pids[i]);
 		for (j = 0; j < num_procs_to_display; j++)
 		{
-			printf("%*.*d ", max_digits[j], max_digits[j], num_procs_to_display[i][j]);
+			printf("%*.*d ", max_digits[j], max_digits[j], importantMatrix[i][j]);
 		}
 	}
 
