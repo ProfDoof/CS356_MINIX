@@ -487,25 +487,66 @@ PUBLIC void cs356_dmp()
 {
 	/* Process message dump for Assignment 2*/
 
-	int pids[10] = {10,5,29,254,42,43,53,67,9,70};
-	int most_active_procs[10][1000] = {{0}};
+
+	int num_procs_to_display = 10;
+	
+	int f,g;
+	int importantSent[10] = {0};
+	int importantReceived[10] = {0};
+	int importantMatrix[10][10] = {{0}};
+
+	int pidsRecieved[10] = {0};
+	int pidsSent[10] = {0};
 	const int length_of_array = (int) (sizeof(pids) / sizeof(int));
 	int* max_digits = (int*) malloc(sizeof(int)*length_of_array);
 
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
 	 */
-	int i, j;
+	int i, j, k;
+	bool flag = 0;
 
-	most_active_procs[0][9] = 15;
-	most_active_procs[3][0] = 10;
-	most_active_procs[5][4] = 10550;
-	most_active_procs[5][4] = 100;
-	most_active_procs[3][9] = 200;
-	most_active_procs[9][3] = 10;
-	most_active_procs[9][0] = 125;
-	most_active_procs[9][1] = 7;
-	most_active_procs[9][4] = 10;
+	for (i = 0; i < num_procs_to_display; i++)
+	{
+		for (j = 0; j < 1000; j++)
+		{
+			if (os_cs356_proc_sum_sent[j] > importantSent[i])
+				flag = 0;
+				for(k=0; k<num_procs_to_display; k++)
+					if (importantSent[k] == j)
+						flag = 1;
+					if (flag)
+						importantSent[i] = j;
+		}
+	};
+	
+	for (i = 0; i < num_procs_to_display; i++)
+	{
+		for (j = 0; j < 1000; j++)
+			{
+				if (os_cs356_proc_sum_received[j] > importantReceived[i])
+				{
+					flag = 0;
+					for(k=0; k<num_procs_to_display; k++)
+						if (importantReceived[k] == j)
+							flag = 1;
+					if (flag)
+						importantReceived[i] = j;
+				}
+		}
+	};
+	
+	for (i = 0; i < num_procs_to_display; i++)
+	{
+		for (j = 0; j < num_procs_to_display; j++)
+		{
+			num_procs_to_display[i][j] = os_cs356_proc_sum_message_table[importantSent[i]][importantReceived[j]];
+		}
+		pidsSent[i] = proc_name(importantReceived[i]);
+		pidsReceived[i] = proc_name(importantSent[i]);
+	}
+	
+
 
 	for (i = 0; i < length_of_array; i++)
 	{
@@ -513,70 +554,37 @@ PUBLIC void cs356_dmp()
 		for (j = 0; j < length_of_array; j++)
 		{
 			int digits = 5;
-			if (most_active_procs[i][j] < 10000) digits = 4;
-			if (most_active_procs[i][j] < 1000) digits = 3;
-			if (most_active_procs[i][j] < 100) digits = 2;
+			if (num_procs_to_display[i][j] < 10000) digits = 4;
+			if (num_procs_to_display[i][j] < 1000) digits = 3;
+			if (num_procs_to_display[i][j] < 100) digits = 2;
 
 			(digits > max_digits[i]) ? max_digits[i] = digits : digits+0;          
 		}
 	}
 
 	printf("---------------- Matthew, John, Kyle - Message Table Dump ----------------\n");
+	printf("    name ");
+	for (i = 0; i < num_procs_to_display; i++)
+	{
+		printf("%*.*s ", max_digits[i] , max_digits[i], procName(pidsReceived[i]);
+	}
 
 	printf("name pid ");
 
-	for (i = 0; i < length_of_array; i++)
+	for (i = 0; i < num_procs_to_display; i++)
 	{
-		printf("%*.*d ",max_digits[i] ,max_digits[i],pids[i]);
+		printf("%*.*d ", max_digits[i], max_digits[i], pidsSent[i]);
 	}
 
-	for (i = 0; i < length_of_array; i++)
+	for (i = 0; i < num_procs_to_display; i++)
 	{
-		printf("\n%4s %3d ", "proc", pids[i]);
-		for (j = 0; j < length_of_array; j++)
+		printf("\n%4s %3d ", proc_name(pidsSent[i]), pids[i]);
+		for (j = 0; j < num_procs_to_display; j++)
 		{
-			printf("%*.*d ",max_digits[j],max_digits[j],most_active_procs[i][j]);
+			printf("%*.*d ", max_digits[j], max_digits[j], num_procs_to_display[i][j]);
 		}
 	}
-printf("\n");
+
+	printf("\n");
+
 } 
-
-/*
-	
-	int i = 0;
-	int f,g;
-	int importantSent[10] = {{0}};
-	int importantReceived[10] = {{0}};
-	int importantMatrix[10][10] = {{0}};
-	
-	while (i < 10)
-	{
-		for (f = 0; f < 1000; f++)
-		{
-			if (os_cs356_proc_sum_sent[f] > importantSent[i])
-				importantSent[i] = f;
-		}
-		i++;
-	};
-	
-	i = 0;
-	
-	while (i < 10)
-	{
-		for (f = 0; f < 1000; f++)
-		{
-			if (os_cs356_proc_sum_received[f] > importantReceived[i])
-				importantReceived[i] = f;
-		}
-		i++;
-	};
-	
-	for (f = 0; f < 10; f++)
-	{
-		for (g = 0; g < 10; g++)
-		{
-			importantMatrix[f][g] = os_cs356_proc_sum_message_table[importantSent[f]][importantReceived[g]];
-		}
-	}
-	
-	*/
