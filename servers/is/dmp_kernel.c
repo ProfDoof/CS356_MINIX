@@ -487,8 +487,18 @@ int proc_nr;
  {
 	 /* Process message dump for Assignment 2*/
 	 
-    int pids[10] = [10,5,29,254,42,43,53,67,9,70];
+    int pids[10] = {10,5,29,254,42,43,53,67,9,70};
     int most_active_procs[10][1000] = {{0}};
+    const int length_of_array = (int) (sizeof(pids) / sizeof(int));
+    int* max_digits = (int*) malloc(sizeof(int)*length_of_array);
+
+	char** digit_lengths_formatting;
+	
+	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
+	* heres some indexes
+	*/
+	int i, j;
+
     most_active_procs[0][10] = 10;
     most_active_procs[10][0] = 10;
     most_active_procs[5][4] = 10550;
@@ -498,37 +508,32 @@ int proc_nr;
     most_active_procs[9][1] = 10;
     most_active_procs[9][4] = 10;
 
-    int length_of_array = (int) sizeof(most_active_procs / sizeof(int)
-    int max_digits[length_of_array] = {{0}};
-
-    for (int i = 0; i < length_of_array; i++)
+    for (i = 0; i < length_of_array; i++)
     {
-        for (int j = 0; j < length_of_array; j++)
+        for (j = 0; j < length_of_array; j++)
         {
           int digits = log10(most_active_procs[i][j]) + 1;
-          (digits > max_digits[i]) ? max_digits[i] = digits : false;          
+          (digits > max_digits[i]) ? max_digits[i] = digits : digits+0;          
         }
     }
 
-    char[length_of_array][4] digit_lengths_formatting;
-    for (int i  = 0; i < length_of_array; i++) 
+    digit_lengths_formatting = malloc(length_of_array* sizeof(char*));
+    for (i  = 0; i < length_of_array; i++) 
     {
-      digit_lengths_formatting[i] = ""
-      strcat(digit_lengths_formatting[i], strcat(" %d", (char)max_digits[i]));
-    }
+	digit_lengths_formatting[i] = malloc(sizeof(char)*4);
+      strcpy(digit_lengths_formatting[i], " %d"+ (char)max_digits[i]);
+    
 
     printf("---------------- Matthew, John, Kyle - Message Table Dump ----------------\n");
 
     printf("name pid ");
-    for (int i = 0; i < length_of_array; i++)
+    for (i = 0; i < length_of_array; i++)
     {
       printf(digit_lengths_formatting[i], pids[i]);
     }
 
     
-    // for (int i = 0; i < length_of_array; i++)
-    // {
-    // }
 
 
  } 
+}
