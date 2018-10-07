@@ -492,8 +492,6 @@ int proc_nr;
     const int length_of_array = (int) (sizeof(pids) / sizeof(int));
     int* max_digits = (int*) malloc(sizeof(int)*length_of_array);
 
-	char** digit_lengths_formatting;
-	
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	* heres some indexes
 	*/
@@ -517,23 +515,19 @@ int proc_nr;
         }
     }
 
-    digit_lengths_formatting = malloc(length_of_array* sizeof(char*));
-    for (i  = 0; i < length_of_array; i++) 
-    {
-	digit_lengths_formatting[i] = malloc(sizeof(char)*4);
-      strcpy(digit_lengths_formatting[i], " %d"+ (char)max_digits[i]);
-    
 
     printf("---------------- Matthew, John, Kyle - Message Table Dump ----------------\n");
 
     printf("name pid ");
     for (i = 0; i < length_of_array; i++)
     {
-      printf(digit_lengths_formatting[i], pids[i]);
+	    for (j = 0; j < length_of_array; j++)
+	{
+		printf("%.*d",max_digits[j],most_active_procs[i][j]);
+	}
     }
 
     
 
 
  } 
-}
