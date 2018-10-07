@@ -1,0 +1,5 @@
+       link  kernel/kernel
+*** Error code 1
+
+Stop.
+make: stopped in /usr/src/kernel

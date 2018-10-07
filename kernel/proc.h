@@ -18,9 +18,11 @@
 #include "const.h"
 #include "priv.h"
 
-int os_cs356_proc_message_table[1000][1000] = {{0}};
-int os_cs356_proc_column[1000] = {{0}};
-int os_cs356_proc_row[1000] = {{0}};
+
+/* Will be size 1000 x 1000 */
+EXTERN int os_cs356_proc_message_table[1000][1000];
+EXTERN int os_cs356_proc_sum_sent[1000];
+EXTERN int os_cs356_proc_sum_received[1000];
 
 struct proc {
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
