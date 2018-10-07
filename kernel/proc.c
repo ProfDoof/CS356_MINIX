@@ -542,16 +542,6 @@ PUBLIC int mini_send(
   int dst_p;
   dst_p = _ENDPOINT_P(dst_e);
   dst_ptr = proc_addr(dst_p);
-  
-  /* If the message table has not been defined yet define it. */
-  if(!os_cs356_proc_message_table)
-  {
-  	int table1[1000] = {{0}};
-  	int table2[1000] = {{0}};
-  	os_cs356_proc_message_table;
-  	os_cs356_proc_sum_sent = table1;
-  	os_cs356_proc_sum_received = table2;
-  }
 
   os_cs356_proc_message_table[caller_ptr->p_nr + 100][dst_ptr->p_nr + 100]++;
   os_cs356_proc_sum_sent[caller_ptr->p_nr + 100]++;
