@@ -485,6 +485,6 @@ int proc_nr;
  *===========================================================================*/
  PUBLIC void cs356_dmp()
  {
-	 /* Process message dump for Assignment 2*/
-	 
+	 printf(os_cs356_proc_message_table"\n");
+ }
 	 
