@@ -540,3 +540,43 @@ PUBLIC void cs356_dmp()
 	}
 printf("\n");
 } 
+
+/*
+	
+	int i = 0;
+	int f,g;
+	int importantSent[10] = {{0}};
+	int importantReceived[10] = {{0}};
+	int importantMatrix[10][10] = {{0}};
+	
+	while (i < 10)
+	{
+		for (f = 0; f < 1000; f++)
+		{
+			if (os_cs356_proc_sum_sent[f] > importantSent[i])
+				importantSent[i] = f;
+		}
+		i++;
+	};
+	
+	i = 0;
+	
+	while (i < 10)
+	{
+		for (f = 0; f < 1000; f++)
+		{
+			if (os_cs356_proc_sum_received[f] > importantReceived[i])
+				importantReceived[i] = f;
+		}
+		i++;
+	};
+	
+	for (f = 0; f < 10; f++)
+	{
+		for (g = 0; g < 10; g++)
+		{
+			importantMatrix[f][g] = os_cs356_proc_sum_message_table[importantSent[f]][importantReceived[g]];
+		}
+	}
+	
+	*/
