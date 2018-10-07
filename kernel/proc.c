@@ -522,6 +522,10 @@ endpoint_t src_dst_e;				/* src or dst process */
 /*===========================================================================*
  *				mini_send				     * 
  *===========================================================================*/
+int os_cs356_proc_message_table[1000][1000] = {{0}};
+int os_cs356_proc_sum_sent[1000] = {{0}};
+int os_cs356_proc_sum_received[1000] = {{0}};
+
 PUBLIC int mini_send(
   register struct proc *caller_ptr,	/* who is trying to send a message? */
   endpoint_t dst_e,			/* to whom is message being sent? */
@@ -542,10 +546,9 @@ PUBLIC int mini_send(
   /* If the message table has not been defined yet define it. */
   if(!os_cs356_proc_message_table)
   {
-  	int table[1000][1000] = {{0}};
   	int table1[1000] = {{0}};
   	int table2[1000] = {{0}};
-  	os_cs356_proc_message_table = table;
+  	os_cs356_proc_message_table;
   	os_cs356_proc_sum_sent = table1;
   	os_cs356_proc_sum_received = table2;
   }
