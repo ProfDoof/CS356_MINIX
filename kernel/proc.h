@@ -24,6 +24,10 @@ EXTERN int os_cs356_proc_message_table[1000][1000];
 EXTERN int os_cs356_proc_sum_sent[1000];
 EXTERN int os_cs356_proc_sum_received[1000];
 
+#define OS356ProcMessageTable (&(os_cs356_proc_message_table))
+#define OS356ProcSumSent      (&(os_cs356_proc_sum_sent))
+#define OS356ProcSumReceived  (&(os_cs356_proc_sum_received))
+
 struct proc {
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
   struct fpu_state_s p_fpu_state;	/* process' fpu_regs saved lazily */

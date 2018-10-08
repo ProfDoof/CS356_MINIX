@@ -489,14 +489,13 @@ PRIVATE char *proc_name(proc_nr)
  *===========================================================================*/
 PUBLIC void cs356_dmp()
 {
-  int t,v;
-  os_cs356_proc_message_table[0][0]++;
+  int t,v;;
   for(t=0; t < 1000; t++)
   {
     for(v=0; v < 1000; v++)
     {
-      if(os_cs356_proc_message_table[t][v] > 0)
-        printf("%4d\n",os_cs356_proc_message_table[t][v]);
+      if(OS356ProcMessageTable[t][v] > 0)
+        printf("%4d\n",OS356ProcMessageTable[t][v]);
     }
   }
 
