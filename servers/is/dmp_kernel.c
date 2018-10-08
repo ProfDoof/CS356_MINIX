@@ -494,8 +494,8 @@ PUBLIC void cs356_dmp()
   {
     for(v=0; v < 1000; v++)
     {
-      if(OS356ProcMessageTable[t][v] > 0)
-        printf("%4d\n",OS356ProcMessageTable[t][v]);
+      if(*(OS356ProcMessageTable[t][v]) > 0)
+        printf("%4d\n",*(OS356ProcMessageTable[t][v]));
     }
   }
 
