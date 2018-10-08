@@ -11,6 +11,7 @@
 #include "kernel/debug.h"
 #include "kernel/type.h"
 #include "kernel/proc.h"
+#include "kernel/proc.c"
 #include "kernel/ipc.h"
 
 #define LINES 22
