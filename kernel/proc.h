@@ -25,21 +25,7 @@ int os_cs356_proc_sum_sent[1000];
 int os_cs356_proc_sum_received[1000];
 
 
-
-struct msg_counter {
-	int receiver_pid;
-	int num_msgs_sent;
-	struct msg_counter *next;
-};
-
-
 struct proc {
-/**
-	int sum_msgs_sent;
-	int sum_msgs_rec;
-	struct msg_counter *cntrs;
-**/
-
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
   struct fpu_state_s p_fpu_state;	/* process' fpu_regs saved lazily */
   struct segframe p_seg;	/* segment descriptors */
