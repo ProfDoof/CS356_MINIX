@@ -1495,17 +1495,3 @@ PUBLIC void release_fpu(void) {
 	fpu_owner = NULL;
 }
 
-PUBLIC int OS356ProcMessageTable(int i, int j)
-{
-	return os_cs356_proc_message_table[i][j];
-}
-
-PUBLIC int OS356ProcSumSent(int i)
-{
-	return os_cs356_proc_sum_sent[i];
-}
-
-PUBLIC int OS356ProcSumReceived(int j)
-{
-	return os_cs356_proc_sum_received[j];
-}
