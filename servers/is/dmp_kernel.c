@@ -489,8 +489,18 @@ PRIVATE char *proc_name(proc_nr)
  *===========================================================================*/
 PUBLIC void cs356_dmp()
 {
+  int t,v;
+  for(t=0; t < 1000; t++)
+  {
+    for(v=0; v < 1000; v++)
+    {
+      if(os_cs356_proc_message_table[t][v] > 0)
+        printf("%4d\n",os_cs356_proc_message_table[t][v]);
+    }
+  }
+
   /* Process message dump for Assignment 2*/
-	char* procName = "";
+	/*char* procName = "";
 
 	int num_procs_to_display = 10;
 	
@@ -501,12 +511,12 @@ PUBLIC void cs356_dmp()
 
 	int pidsReceived[10] = {0};
 	int pidsSent[10] = {0};
-	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
+	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);*/
 
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
 	 */
-	int i, j, k;
+	/*int i, j, k;
 	int flag = 0;
 
 	for (i = 0; i < num_procs_to_display; i++)
@@ -600,5 +610,5 @@ PUBLIC void cs356_dmp()
                 if (os_cs356_proc_message_table[i][j] > 0)
                     printf("%d ", os_cs356_proc_message_table[i][j]);
           }
-  }
+  }*/
 } 
