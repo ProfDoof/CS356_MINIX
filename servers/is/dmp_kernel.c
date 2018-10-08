@@ -511,7 +511,7 @@ PUBLIC void cs356_dmp()
 
 	int pidsReceived[10] = {0};
 	int pidsSent[10] = {0};
-	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);*/
+	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
 
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
