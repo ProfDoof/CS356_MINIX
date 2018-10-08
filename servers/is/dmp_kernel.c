@@ -495,7 +495,7 @@ PUBLIC void cs356_dmp()
 	int importantReceived[10] = {0};
 	int importantMatrix[10][10] = {{0}};
 
-	int pidsRecieved[10] = {0};
+	int pidsReceived[10] = {0};
 	int pidsSent[10] = {0};
 	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
 
@@ -534,7 +534,7 @@ PUBLIC void cs356_dmp()
 				}
 		}
 	};
-	
+
 	for (i = 0; i < num_procs_to_display; i++)
 	{
 		for (j = 0; j < num_procs_to_display; j++)
@@ -547,10 +547,10 @@ PUBLIC void cs356_dmp()
 	
 
 
-	for (i = 0; i < length_of_array; i++)
+	for (i = 0; i < num_procs_to_display; i++)
 	{
 		max_digits[i] = 0;
-		for (j = 0; j < length_of_array; j++)
+		for (j = 0; j < num_procs_to_display; j++)
 		{
 			int digits = 5;
 			if (importantMatrix[i][j] < 10000) digits = 4;
@@ -564,7 +564,7 @@ PUBLIC void cs356_dmp()
 	printf("---------------- Matthew, John, Kyle - Message Table Dump ----------------\n");
 	printf("    name ");
 	for (i = 0; i < num_procs_to_display; i++)
-	{)
+	{
 		printf("%*.*s ", max_digits[i] , max_digits[i], procName(pidsReceived[i]));
 	}
 
