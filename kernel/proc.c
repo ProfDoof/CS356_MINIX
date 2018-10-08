@@ -522,9 +522,12 @@ endpoint_t src_dst_e;				/* src or dst process */
 /*===========================================================================*
  *				mini_send				     * 
  *===========================================================================*/
-EXTERN int os_cs356_prodc_message_table[1000][1000] = {{0}};
-EXTERN int os_cs356_proc_sum_sent[1000] = {0};
-EXTERN int os_cs356_proc_sum_received[1000] = {0};
+#ifndef OS_356_MESSAGE_TABLE
+#define OS_356_MESSAGE_TABLE
+int os_cs356_proc_message_table[1000][1000] = {{0}};
+int os_cs356_proc_sum_sent[1000] = {0};
+int os_cs356_proc_sum_received[1000] = {0};
+#endif
 
 PUBLIC int mini_send(
   register struct proc *caller_ptr,	/* who is trying to send a message? */

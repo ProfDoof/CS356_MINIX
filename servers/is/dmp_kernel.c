@@ -483,6 +483,13 @@ PRIVATE char *proc_name(proc_nr)
 /*===========================================================================*
  *				cs356_dmp				     *
  *===========================================================================*/
+#ifndef OS_356_MESSAGE_TABLE
+#define OS_356_MESSAGE_TABLE
+int os_cs356_proc_message_table[1000][1000] = {{0}};
+int os_cs356_proc_sum_sent[1000] = {0};
+int os_cs356_proc_sum_received[1000] = {0};
+#endif
+
 PUBLIC void cs356_dmp()
 {
 	/* Process message dump for Assignment 2*/
