@@ -491,6 +491,7 @@ PUBLIC void cs356_dmp()
 	EXTERN int os_cs356_proc_sum_sent[1000];
 	EXTERN int os_cs356_proc_sum_received[1000];
 
+	char* procName = "";
 
 	int num_procs_to_display = 10;
 	
@@ -557,9 +558,9 @@ PUBLIC void cs356_dmp()
 		for (j = 0; j < num_procs_to_display; j++)
 		{
 			int digits = 5;
+			if (importantMatrix[i][j] < 100000) digits = 5;
 			if (importantMatrix[i][j] < 10000) digits = 4;
 			if (importantMatrix[i][j] < 1000) digits = 3;
-			if (importantMatrix[i][j] < 100) digits = 2;
 
 			(digits > max_digits[i]) ? max_digits[i] = digits : digits+0;          
 		}
@@ -569,19 +570,21 @@ PUBLIC void cs356_dmp()
 	printf("    name ");
 	for (i = 0; i < num_procs_to_display; i++)
 	{
-		printf("%*.*s ", max_digits[i] , max_digits[i], proc_name(pidsReceived[i]));
+		procName = proc_name(pidsReceived[i]);
+		printf("%*.*s ", max_digits[i] , max_digits[i], procName);
 	}
 
 	printf("\nname pid ");
 
 	for (i = 0; i < num_procs_to_display; i++)
 	{
-		printf("%*.*d ", max_digits[i], max_digits[i], pidsSent[i]);
+		printf("%*.*d ", max_digits[i], max_digits[i], pidsReceived[i]);
 	}
 
 	for (i = 0; i < num_procs_to_display; i++)
 	{
-		printf("\n%4.4s %3d ", proc_name(pidsSent[i]), pidsSent[i]);
+		procName = proc_name(pidsSent[i]);
+		printf("\n%4.4s %3d ", procName, pidsSent[i]);
 		for (j = 0; j < num_procs_to_display; j++)
 		{
 			printf("%*.*d ", max_digits[j], max_digits[j], importantMatrix[i][j]);
