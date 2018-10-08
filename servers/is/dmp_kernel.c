@@ -492,8 +492,9 @@ int os_cs356_proc_sum_received[1000] = {0};
 
 PUBLIC void cs356_dmp()
 {
-	/* Process message dump for Assignment 2*/
-	char* procName = "";
+	printf("I work")
+  /* Process message dump for Assignment 2*/
+/*	char* procName = "";
 
 	int num_procs_to_display = 10;
 	
@@ -505,11 +506,11 @@ PUBLIC void cs356_dmp()
 	int pidsReceived[10] = {0};
 	int pidsSent[10] = {0};
 	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
-
+*/
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
 	 */
-	int i, j, k;
+/*	int i, j, k;
 	int flag = 0;
 
 	for (i = 0; i < num_procs_to_display; i++)
@@ -604,5 +605,5 @@ PUBLIC void cs356_dmp()
                     printf("%d ", os_cs356_proc_message_table[i][j]);
 }}
 
-
+*/
 } 
