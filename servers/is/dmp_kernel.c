@@ -11,6 +11,7 @@
 #include "kernel/debug.h"
 #include "kernel/type.h"
 #include "kernel/proc.h"
+#include "kernel/proc.c"
 #include "kernel/ipc.h"
 
 #define LINES 22
@@ -51,9 +52,6 @@ for (rp = oldrp; rp < END_PROC_ADDR; rp++) { \
 	 * Note that the process table copy has the same name as in the kernel
 	 * so that most macros and definitions from proc.h also apply here.
 	 */
-  PUBLIC int os_cs356_proc_message_table[1000][1000];
-  PUBLIC int os_cs356_proc_sum_sent[1000];
-  PUBLIC int os_cs356_proc_sum_received[1000];
 
 	PUBLIC struct proc proc[NR_TASKS + NR_PROCS];
 	PUBLIC struct priv priv[NR_SYS_PROCS];
