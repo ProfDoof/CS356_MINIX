@@ -487,6 +487,10 @@ PUBLIC void cs356_dmp()
 {
 	/* Process message dump for Assignment 2*/
 
+	EXTERN int os_cs356_proc_message_table[1000][1000];
+	EXTERN int os_cs356_proc_sum_sent[1000];
+	EXTERN int os_cs356_proc_sum_received[1000];
+
 
 	int num_procs_to_display = 10;
 	
@@ -539,7 +543,7 @@ PUBLIC void cs356_dmp()
 	{
 		for (j = 0; j < num_procs_to_display; j++)
 		{
-			importantMatrix[i][j] = *(CS356TABLE(importantSent[i],importantReceived[j]);
+			importantMatrix[i][j] = *(CS356TABLE(importantSent[i],importantReceived[j]));
 		}
 		pidsSent[i] = atoi(proc_name(importantReceived[i]));
 		pidsReceived[i] = atoi(proc_name(importantSent[i]));
