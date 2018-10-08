@@ -24,9 +24,9 @@ EXTERN int os_cs356_proc_message_table[1000][1000];
 EXTERN int os_cs356_proc_sum_sent[1000];
 EXTERN int os_cs356_proc_sum_received[1000];
 
-#define OS356ProcMessageTable(i,j) ((os_cs356_proc_message_table[i][j]))
-#define OS356ProcSumSent(i)      ((os_cs356_proc_sum_sent[i]))
-#define OS356ProcSumReceived(j)  ((os_cs356_proc_sum_received[j]))
+_PROTOTYPE(int OS356ProcMessageTable, (int i, int j) );
+_PROTOTYPE(int OS356ProcSumSent,      (int i));
+_PROTOTYPE(int OS356ProcSumReceived,  (int j));
 
 struct proc {
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
