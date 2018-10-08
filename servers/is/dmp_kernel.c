@@ -545,8 +545,8 @@ PUBLIC void cs356_dmp()
 		{
 			importantMatrix[i][j] = os_cs356_proc_message_table[i][j];
 		}
-		pidsSent[i] = atoi(proc_name(importantReceived[i]-100));
-		pidsReceived[i] = atoi(proc_name(importantSent[i]-100));
+		pidsSent[i] = (importantReceived[i]-100);
+		pidsReceived[i] = (importantSent[i]-100);
 	}
 	
 
@@ -581,7 +581,7 @@ PUBLIC void cs356_dmp()
 
 	for (i = 0; i < num_procs_to_display; i++)
 	{
-		printf("\n%4s %3d ", proc_name(pidsSent[i]), pidsSent[i]);
+		printf("\n%4.4s %3d ", proc_name(pidsSent[i]), pidsSent[i]);
 		for (j = 0; j < num_procs_to_display; j++)
 		{
 			printf("%*.*d ", max_digits[j], max_digits[j], importantMatrix[i][j]);
@@ -592,9 +592,12 @@ PUBLIC void cs356_dmp()
 
 
 	for (i = 0; i < 1000; i ++) 
-	{
-		prinf("%d ", os_cs356_proc_message_table[i])
-	}
+{
+          for (j = 0; j < 1000; j ++) 
+{
+                if (os_cs356_proc_message_table[i][j] > 0)
+                    printf("%d ", os_cs356_proc_message_table[i][j]);
+}}
 
 
 } 
