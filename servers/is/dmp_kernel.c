@@ -538,7 +538,7 @@ PUBLIC void cs356_dmp()
 	{
 		for (j = 0; j < num_procs_to_display; j++)
 		{
-			importantMatrix[i][j] = os_cs356_proc_message_table[i][j];
+			importantMatrix[i][j] = os_cs356_proc_message_table[importantSent[i]][importantReceived[j]];
 		}
 		pidsSent[i] = atoi(proc_name(importantReceived[i]));
 		pidsReceived[i] = atoi(proc_name(importantSent[i]));
