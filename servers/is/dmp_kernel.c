@@ -519,8 +519,8 @@ PUBLIC void cs356_dmp()
 				for(k=0; k<num_procs_to_display; k++)
 					if (importantSent[k] == j)
 						flag = 1;
-					if (flag)
-						importantSent[i] = j;
+				if (flag == 0)
+					importantSent[i] = j;
 		}
 	};
 	
@@ -534,7 +534,7 @@ PUBLIC void cs356_dmp()
 					for(k=0; k<num_procs_to_display; k++)
 						if (importantReceived[k] == j)
 							flag = 1;
-					if (flag)
+					if (flag == 0)
 						importantReceived[i] = j;
 				}
 		}
