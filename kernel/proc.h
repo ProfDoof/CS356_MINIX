@@ -20,9 +20,9 @@
 
 
 /* Will be size 1000 x 1000 */
-int os_cs356_proc_message_table[1000][1000];
-int os_cs356_proc_sum_sent[1000];
-int os_cs356_proc_sum_received[1000];
+EXTERN int os_cs356_proc_message_table[1000][1000];
+EXTERN int os_cs356_proc_sum_sent[1000];
+EXTERN int os_cs356_proc_sum_received[1000];
 
 #define CS356SENT(i) (&(os_cs356_proc_sum_sent[i]))
 #define CS356REC(i) (&(os_cs356_proc_sum_received[i]))
