@@ -25,12 +25,19 @@ int os_cs356_proc_sum_sent[1000];
 int os_cs356_proc_sum_received[1000];
 
 
-#define CS356SENT(i) (&(os_cs356_proc_sum_sent[i]))
-#define CS356REC(i) (&(os_cs356_proc_sum_received[i]))
-#define CS356TABLE(i,j) (&(os_cs356_proc_message_table[i][j]))
+
+struct msg_counter {
+	int receiver_pid;
+	int num_msgs_sent;
+	struct msg_counter *next;
+};
 
 
 struct proc {
+	int sum_msgs_sent;
+	int sum_msgs_rec;
+	struct msg_counter *cntrs;
+
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
   struct fpu_state_s p_fpu_state;	/* process' fpu_regs saved lazily */
   struct segframe p_seg;	/* segment descriptors */
@@ -159,6 +166,21 @@ struct proc {
 #define proc_no_quantum(p)	((p)->p_rts_flags & RTS_NO_QUANTUM)
 #define proc_ptr_ok(p)		((p)->p_magic == PMAGIC)
 #define proc_used_fpu(p)	((p)->p_misc_flags & (MF_FPU_INITIALIZED))
+
+#define CS356SENT(p) ((p)->sum_msgs_sent)
+#define CS356REC(p) ((p)->sum_msgs_rec)
+/** you pass this a *proc, an index, and a *msg_counter**/
+#define CS356(p,i,c) \
+	do { \
+		struct msg_counter *cntrs = (p)->cntrs; \
+		while ((i > 0) && (cntr != NULL) \
+		{ \
+			cntr = (cntrs)->next; \
+			i--; \
+		} \
+		c = cntr;  \
+	} while(0)
+
 
 /* test whether the process is scheduled by the kernel's default policy  */
 #define proc_kernel_scheduler(p)	((p)->p_scheduler == NULL || \
