@@ -32,6 +32,7 @@ struct msg_counter {
 	struct msg_counter *next;
 }
 
+
 struct proc {
 
 	int sum_msgs_sent;

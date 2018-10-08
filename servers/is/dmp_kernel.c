@@ -11,6 +11,7 @@
 #include "kernel/debug.h"
 #include "kernel/type.h"
 #include "kernel/proc.h"
+#include "kernel/proc.c"
 #include "kernel/ipc.h"
 
 #define LINES 22
@@ -51,6 +52,7 @@ for (rp = oldrp; rp < END_PROC_ADDR; rp++) { \
 	 * Note that the process table copy has the same name as in the kernel
 	 * so that most macros and definitions from proc.h also apply here.
 	 */
+
 	PUBLIC struct proc proc[NR_TASKS + NR_PROCS];
 	PUBLIC struct priv priv[NR_SYS_PROCS];
 	PUBLIC struct boot_image image[NR_BOOT_PROCS];
@@ -485,12 +487,19 @@ PRIVATE char *proc_name(proc_nr)
  *===========================================================================*/
 PUBLIC void cs356_dmp()
 {
-	/* Process message dump for Assignment 2*/
+	/*
+  int t,v;;
+  for(t=0; t < 1000; t++)
+  {
+    for(v=0; v < 1000; v++)
+    {
+      if(OS356ProcMessageTable(t,v) > 0)
+        printf("%4d\n",OS356ProcMessageTable(t,v));
+    }
+  }
+	*/
 
-	EXTERN int os_cs356_proc_message_table[1000][1000];
-	EXTERN int os_cs356_proc_sum_sent[1000];
-	EXTERN int os_cs356_proc_sum_received[1000];
-
+  /* Process message dump for Assignment 2*/
 	char* procName = "";
 
 	int num_procs_to_display = 10;
@@ -502,7 +511,7 @@ PUBLIC void cs356_dmp()
 
 	int pidsReceived[10] = {0};
 	int pidsSent[10] = {0};
-	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
+	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);*/
 
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
@@ -595,12 +604,11 @@ PUBLIC void cs356_dmp()
 
 
 	for (i = 0; i < 1000; i ++) 
-{
+  {
           for (j = 0; j < 1000; j ++) 
-{
+          {
                 if (os_cs356_proc_message_table[i][j] > 0)
                     printf("%d ", os_cs356_proc_message_table[i][j]);
-}}
-
-
+          }
+  }
 } 
