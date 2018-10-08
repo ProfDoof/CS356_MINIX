@@ -545,11 +545,9 @@ PUBLIC int mini_send(
   dst_p = _ENDPOINT_P(dst_e);
   dst_ptr = proc_addr(dst_p);
 
-
-  printf(caller_ptr->p_nr);
-  os_cs356_proc_message_table[caller_ptr->p_nr + 100][dst_ptr->p_nr + 100]++;
-  os_cs356_proc_sum_sent[caller_ptr->p_nr + 100]++;
-  os_cs356_proc_sum_received[dst_ptr->p_nr + 100]++;
+  os_cs356_proc_message_table[caller_ptr->p_nr + NR_TASKS][dst_ptr->p_nr + NR_TASKS]++;
+  os_cs356_proc_sum_sent[caller_ptr->p_nr + NR_TASKS]++;
+  os_cs356_proc_sum_received[dst_ptr->p_nr + NR_TASKS]++;
 
   if (RTS_ISSET(dst_ptr, RTS_NO_ENDPOINT))
   {
