@@ -492,7 +492,7 @@ int os_cs356_proc_sum_received[1000] = {0};
 
 PUBLIC void cs356_dmp()
 {
-	printf("I work")
+	printf("I work");
   /* Process message dump for Assignment 2*/
 /*	char* procName = "";
 
