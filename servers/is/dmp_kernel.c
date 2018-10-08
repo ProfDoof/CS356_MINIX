@@ -513,7 +513,7 @@ PUBLIC void cs356_dmp()
 	{
 		for (j = 0; j < 1000; j++)
 		{
-			if (*(CS356SENT(j)) > importantSent[i])
+			if (os_cs356_proc_sum_sent[j] > importantSent[i])
 				flag = 0;
 				for(k=0; k<num_procs_to_display; k++)
 					if (importantSent[k] == j)
@@ -527,7 +527,7 @@ PUBLIC void cs356_dmp()
 	{
 		for (j = 0; j < 1000; j++)
 			{
-				if (*(CS356REC(j)) > importantReceived[i])
+				if (os_cs356_proc_sum_received[j] > importantReceived[i])
 				{
 					flag = 0;
 					for(k=0; k<num_procs_to_display; k++)
@@ -543,7 +543,7 @@ PUBLIC void cs356_dmp()
 	{
 		for (j = 0; j < num_procs_to_display; j++)
 		{
-			importantMatrix[i][j] = *(CS356TABLE(importantSent[i],importantReceived[j]));
+			importantMatrix[i][j] = os_cs356_proc_message_table[i][j];
 		}
 		pidsSent[i] = atoi(proc_name(importantReceived[i]));
 		pidsReceived[i] = atoi(proc_name(importantSent[i]));
