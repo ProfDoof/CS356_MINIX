@@ -51,6 +51,10 @@ for (rp = oldrp; rp < END_PROC_ADDR; rp++) { \
 	 * Note that the process table copy has the same name as in the kernel
 	 * so that most macros and definitions from proc.h also apply here.
 	 */
+  PUBLIC int os_cs356_proc_message_table[1000][1000];
+  PUBLIC int os_cs356_proc_sum_sent[1000];
+  PUBLIC int os_cs356_proc_sum_received[1000];
+  
 	PUBLIC struct proc proc[NR_TASKS + NR_PROCS];
 	PUBLIC struct priv priv[NR_SYS_PROCS];
 	PUBLIC struct boot_image image[NR_BOOT_PROCS];
@@ -483,13 +487,6 @@ PRIVATE char *proc_name(proc_nr)
 /*===========================================================================*
  *				cs356_dmp				     *
  *===========================================================================*/
-#ifndef OS_356_MESSAGE_TABLE
-#define OS_356_MESSAGE_TABLE
-int os_cs356_proc_message_table[1000][1000] = {{0}};
-int os_cs356_proc_sum_sent[1000] = {0};
-int os_cs356_proc_sum_received[1000] = {0};
-#endif
-
 PUBLIC void cs356_dmp()
 {
 	printf("I work");
