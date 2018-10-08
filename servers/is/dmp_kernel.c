@@ -487,9 +487,9 @@ PUBLIC void cs356_dmp()
 {
 	/* Process message dump for Assignment 2*/
 
-	EXTERN int os_cs356_proc_message_table[][];
-	EXTERN int os_cs356_proc_sum_sent[];
-	EXTERN int os_cs356_proc_sum_received[];
+	EXTERN int os_cs356_proc_message_table[1000][1000];
+	EXTERN int os_cs356_proc_sum_sent[1000];
+	EXTERN int os_cs356_proc_sum_received[1000];
 
 
 	int num_procs_to_display = 10;
