@@ -598,12 +598,11 @@ PUBLIC void cs356_dmp()
 
 
 	for (i = 0; i < 1000; i ++) 
-{
+  {
           for (j = 0; j < 1000; j ++) 
-{
+          {
                 if (os_cs356_proc_message_table[i][j] > 0)
                     printf("%d ", os_cs356_proc_message_table[i][j]);
-}}
-
-*/
+          }
+  }*/
 } 
