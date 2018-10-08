@@ -546,8 +546,8 @@ PUBLIC void cs356_dmp()
 		{
 			importantMatrix[i][j] = os_cs356_proc_message_table[i][j];
 		}
-		pidsSent[i] = (importantReceived[i]-100);
-		pidsReceived[i] = (importantSent[i]-100);
+		pidsSent[i] = (importantSent[i]-100);
+		pidsReceived[i] = (importantReceived[i]-100);
 	}
 	
 
