@@ -34,9 +34,11 @@ struct msg_counter {
 
 
 struct proc {
+/**
 	int sum_msgs_sent;
 	int sum_msgs_rec;
 	struct msg_counter *cntrs;
+**/
 
   struct stackframe_s p_reg;	/* process' registers saved in stack frame */
   struct fpu_state_s p_fpu_state;	/* process' fpu_regs saved lazily */
