@@ -30,7 +30,7 @@ struct msg_counter {
 	int receiver_pid;
 	int num_msgs_sent;
 	struct msg_counter *next;
-}
+};
 
 
 struct proc {
