@@ -54,7 +54,7 @@ for (rp = oldrp; rp < END_PROC_ADDR; rp++) { \
   PUBLIC int os_cs356_proc_message_table[1000][1000];
   PUBLIC int os_cs356_proc_sum_sent[1000];
   PUBLIC int os_cs356_proc_sum_received[1000];
-  
+
 	PUBLIC struct proc proc[NR_TASKS + NR_PROCS];
 	PUBLIC struct priv priv[NR_SYS_PROCS];
 	PUBLIC struct boot_image image[NR_BOOT_PROCS];
@@ -489,9 +489,8 @@ PRIVATE char *proc_name(proc_nr)
  *===========================================================================*/
 PUBLIC void cs356_dmp()
 {
-	printf("I work");
   /* Process message dump for Assignment 2*/
-/*	char* procName = "";
+	char* procName = "";
 
 	int num_procs_to_display = 10;
 	
@@ -503,11 +502,11 @@ PUBLIC void cs356_dmp()
 	int pidsReceived[10] = {0};
 	int pidsSent[10] = {0};
 	int* max_digits = (int*) malloc(sizeof(int)*num_procs_to_display);
-*/
+
 	/** variables must be declared at the top of the block, because minix is DUMB and follows the 89 standards 
 	 * heres some indexes
 	 */
-/*	int i, j, k;
+	int i, j, k;
 	int flag = 0;
 
 	for (i = 0; i < num_procs_to_display; i++)
@@ -601,5 +600,5 @@ PUBLIC void cs356_dmp()
                 if (os_cs356_proc_message_table[i][j] > 0)
                     printf("%d ", os_cs356_proc_message_table[i][j]);
           }
-  }*/
+  }
 } 
